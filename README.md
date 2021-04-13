@@ -30,6 +30,8 @@ The action assumes jest configuration and jest module already present in the wor
 
 **NEW:** 
 
+ - The action now supports an update command to be run after switching to the base branch. By default nothing is run.This can be useful if you want to prevent dependency differences from causing failures.
+
  - The action now supports custom run command, for custom use cases, using the variable runCommand, you can now pass your own command to run. Following is an example where we want to collect coverage from only few files out of all the code and want to use custom options such as `forceExit` & `detectOpenHandles`.
 ```bash
    runCommand: "npx jest --collectCoverageFrom='[\"src/**/*.{js,jsx,ts,tsx}\"]' --coverage --collectCoverage=true --coverageDirectory='./' --coverageReporters='json-summary' --forceExit --detectOpenHandles test/.*test.*"
@@ -69,5 +71,6 @@ jobs:
       with:
         fullCoverageDiff: false // defaults to false, if made true whole coverage report is commented with the diff
         runCommand: "npx jest --collectCoverageFrom='[\"src/**/*.{js,jsx,ts,tsx}\"]' --coverage --collectCoverage=true --coverageDirectory='./' --coverageReporters='json-summary' --forceExit --detectOpenHandles test/.*test.*"
+        updateCommand: "npm i"
         delta: 0.5
 ```

@@ -14,6 +14,9 @@ inputs:
   delta:
     description: 'Difference between the old and final test coverage'
     default: 100
+  updateCommand:
+    description: 'custom command to update the base branch dependencies'
+    default: ''
 branding:
   color: red
   icon: git-pull-request
