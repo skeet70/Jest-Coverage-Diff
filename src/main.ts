@@ -26,7 +26,7 @@ async function run(): Promise<void> {
     execSync('/usr/bin/git stash')
     execSync(`/usr/bin/git checkout --progress --force ${branchNameBase}`)
     execSync(updateCommand)
-    console.log('post update command')
+    execSync('rm -rf node_modules/; yarn')
     execSync(commandToRun)
     const codeCoverageOld = <CoverageReport>(
       JSON.parse(fs.readFileSync('coverage-summary.json').toString())
